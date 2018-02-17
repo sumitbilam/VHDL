@@ -1,0 +1,50 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity FullAdder is
+	port(
+		A_fa : in std_logic;
+		B_fa : in std_logic;
+		Cin : in std_logic;
+		sum_fa: out std_logic;
+		carry_fa : out std_logic
+	);
+end FullAdder;
+
+architecture Behavioral of FullAdder is
+
+	signal sum1, sum2, carry1, carry2: std_logic;-- these are going to be the output for out half adder since we are using two half adder 
+	
+	component HalfAdder is  --component declaration
+		port (
+			A : in std_logic; --component always written between architecture and begin
+		   B : in std_logic;
+		   sum : out std_logic;
+		   carry : out std_logic
+		);	
+	end component;
+	
+begin
+   --here we need two half adder to make full adder work port mapping HalfAdder
+	HA1: HalfAdder 
+		port map (
+			A => A_fa, --we are ending this statements with , not with ;
+			B => B_fa,
+			sum => sum1,
+			carry => carry1
+	   );
+	
+	HA2: HalfAdder 
+		port map (
+			A => Cin,
+			B => sum1,
+			sum => sum2,
+			carry => carry2
+			 
+		);
+	--our final sum and carry out
+	sum_fa <= sum2;
+	carry_fa <= carry1 or carry2;
+	
+end Behavioral;
