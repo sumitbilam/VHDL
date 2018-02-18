@@ -14,7 +14,7 @@ end FullAdder;
 
 architecture Behavioral of FullAdder is
 
-	signal sum1, sum2, carry1, carry2: std_logic;-- these are going to be the output for out half adder since we are using two half adder 
+	signal sum1, sum2, carry1, carry2: std_logic; -- these are going to be the output for half adder since we are using two half adder 
 	
 	component HalfAdder is  --component declaration
 		port (
