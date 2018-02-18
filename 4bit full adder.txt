@@ -1,0 +1,63 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+
+
+entity fourbit_fa is
+	port (
+		A : in std_logic_vector(3 downto 0);
+		B : in std_logic_vector(3 downto 0);
+		Cin : in std_logic;
+		sum: out std_logic_vector(3 downto 0);
+		carryout : out std_logic
+	);
+end fourbit_fa;
+
+architecture structural of fourbit_fa is
+
+	signal temp1, temp2, temp3 : std_logic;
+	
+	component FullAdder is --component declaration 
+		port (
+			A_fa : in std_logic;
+			B_fa : in std_logic;
+			Cin : in std_logic;
+			sum_fa: out std_logic;
+			carry_fa : out std_logic
+		);
+	end component;
+begin
+
+	fa0 : FullAdder
+		port map (
+			A_fa => A(0),
+			B_fa => B(0),
+			Cin => Cin,
+			sum_fa => sum(0),
+			carry_fa => temp1
+		);
+	fa1 : FullAdder
+		port map (
+			A_fa => A(1),
+			B_fa => B(1),
+			Cin => temp1,
+			sum_fa => sum(1),
+			carry_fa => temp2
+		);
+	fa2 : FullAdder
+		port map (
+			A_fa => A(2),
+			B_fa => B(2),
+			Cin => temp2,
+			sum_fa => sum(2),
+			carry_fa => temp3
+		);
+	fa3 : FullAdder
+		port map (
+			A_fa => A(3),
+			B_fa => B(3),
+			Cin => temp3,
+			sum_fa => sum(3),
+			carry_fa => carryout
+		);
+
+end Structural;
