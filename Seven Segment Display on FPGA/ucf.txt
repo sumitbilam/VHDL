@@ -1,0 +1,20 @@
+net clk loc = B8;
+
+net topselDispA loc  = T17; 
+net topselDispB loc = T18;
+net topselDispC loc = U17;
+net topselDispD loc = U18;
+net topselDispE loc = M14;
+net topselDispF loc = N14;
+net topselDispG loc = L14;
+
+net switch0 loc = T5;
+net switch1 loc = V8;
+net switch2 loc = U8;
+net switch3 loc = N8;
+net switch4 loc = M8;
+net switch5 loc = V9;
+net switch6 loc = T9;
+net switch7 loc = T10;
+
+
